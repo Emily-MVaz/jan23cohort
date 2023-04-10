@@ -1,68 +1,65 @@
-package com.example.wosmartweek12day1.models;
+package com.example.crudappsession.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="items")
-public class Item {
-
+@Table(name="categorys")
+public class Category {
+	
     // ==========================
     //        ATTRIBUTES
     // ==========================
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull(message="Required")
+	@NotEmpty(message="Must have a name")
 	private String name;
 	
-	@NotNull(message="Required")
-	private double price;
 	
-	@Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date createdAt;
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern = "yyy-MM-dd")
+	private Date updatedAt;
 	
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date updatedAt;
+    // ==========================
+    //        RELATIONSHIPS
+    // ==========================
+	
+	@OneToMany(mappedBy="cat", fetch = FetchType.LAZY)
+	private List<Sticker> stickers;
     
-	@PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
     // ==========================
     //        CONSTRUCTOR
     // ==========================
-    
-    public Item() {}
-    
-    
-    public Item(@NotNull(message="Required") String name, @NotNull(message = "Required") double price) {
+    public Category() {}
+	public Category(@NotEmpty(message = "Must have a name") String name) {
 		super();
 		this.name = name;
-		this.price = price;
 	}
-    
+	
+	
 	// ==========================
     //     GETTERS / SETTERS
     // ==========================
-    
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -74,12 +71,6 @@ public class Item {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -93,6 +84,19 @@ public class Item {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
-
+	public List<Sticker> getStickers() {
+		return stickers;
+	}
+	public void setStickers(List<Sticker> stickers) {
+		this.stickers = stickers;
+	}
+	
+	@PrePersist
+    protected void onCreate() {
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = new Date();
+    }
 }
