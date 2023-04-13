@@ -8,12 +8,11 @@
 		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example.practice.daikichipathvariables</groupId>
+	<groupId>com.example.daikichipathvariables</groupId>
 	<artifactId>DaikichiPathVariables</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<name>DaikichiPathVariables</name>
-	<description>DaikichiPathVariables assignment</description>
+	<description>Daikichi Path Variable assignment</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -28,11 +27,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
