@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+h1 {
+	color: #ff8080;
+	padding: 1em;
+}
+
+main {
+	border: solid 25px pink;
+}
+
+tr {
+	border-bottom: solid 1px pink;
+}
+
+.table-title {
+	border-bottom: solid 2px pink;
+}
+
+.table{
+	margin: 0;
+}
