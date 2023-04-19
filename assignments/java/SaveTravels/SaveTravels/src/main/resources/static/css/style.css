@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+table {
+  text-align: center;
+  border: solid 2px black !important;
+}
+
+thead {
+  background-color: rgb(211, 211, 211);
+  font-size: 1.25em;
+  
+}
+
+h1,
+h2 {
+  color: rgb(63, 63, 185);
+}
+
+.p-2 {
+	width: 100%;
+}
